@@ -20,9 +20,9 @@ resource "aws_security_group" "cp-tf-public-sg" {
 
   # Outbound traffic
   egress {
-    from_port   = "ALL"
-    to_port     = "ALL"
-    protocol    = "tcp"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -53,9 +53,9 @@ resource "aws_security_group" "cp-tf-private-sg" {
 
   # Outbound traffic
   egress {
-    from_port   = "ALL"
-    to_port     = "ALL"
-    protocol    = "tcp"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -104,9 +104,9 @@ resource "aws_security_group" "cp-tf-nat-sg" {
 
   # Outbound traffic
   egress {
-    from_port   = "ALL"
-    to_port     = "ALL"
-    protocol    = "tcp"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -127,9 +127,9 @@ resource "aws_security_group" "cp_tf_rds_sg" {
 
   # Outbound traffic
   egress {
-    from_port   = "ALL"
-    to_port     = "ALL"
-    protocol    = "tcp"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
