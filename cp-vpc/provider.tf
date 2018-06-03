@@ -13,9 +13,10 @@ resource "aws_vpc" "cp_tf_vpc_02060600" {
 }
 
 resource "aws_subnet" "cp_tf_pub_subnet-1" {
-  vpc_id            = "${aws_vpc.cp_tf_vpc_02060600.id}"
-  cidr_block        = "${var.pub_subnet1_cidr}"
-  availability_zone = "${var.zone_a}"
+  vpc_id                  = "${aws_vpc.cp_tf_vpc_02060600.id}"
+  cidr_block              = "${var.pub_subnet1_cidr}"
+  map_public_ip_on_launch = true
+  availability_zone       = "${var.zone_a}"
 
   tags {
     Name = "cp_tf_pub_subnet1"
