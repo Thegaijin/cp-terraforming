@@ -54,7 +54,7 @@ variable "cp4_ami_id" {
 }
 
 variable "cp_nat_ami_id" {
-  default = "ami-0dfd40f1a83c9b757"
+  default = "ami-0247759dfcce1385a"
 }
 
 variable "key_pair" {

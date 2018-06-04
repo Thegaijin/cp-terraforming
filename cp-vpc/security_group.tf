@@ -18,6 +18,14 @@ resource "aws_security_group" "cp-tf-public-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # ICMP access from anywhere
+  ingress {
+    from_port   = "-1"
+    to_port     = "-1"
+    protocol    = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   # Outbound traffic
   egress {
     from_port   = 0
@@ -96,7 +104,7 @@ resource "aws_security_group" "cp-tf-nat-sg" {
 
   # Custom port access from anywhere
   ingress {
-    from_port   = 22
+    from_port   = 10235
     to_port     = 10235
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
@@ -135,5 +143,29 @@ resource "aws_security_group" "cp_tf_rds_sg" {
 
   tags {
     Name = "cp_tf_rds_sg"
+  }
+}
+
+resource "aws_security_group" "cp_tf_elb_sg" {
+  name   = "cp_tf_elb_sg"
+  vpc_id = "${aws_vpc.cp_tf_vpc_02060600.id}"
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Outbound traffic
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "cp_tf_elb_sg"
   }
 }

@@ -1,7 +1,3 @@
-# resource "aws_elb" "backend-elb" {
-#   name = "backend-elb"
-# }
-
 resource "aws_internet_gateway" "cp_tf_igw" {
   vpc_id = "${aws_vpc.cp_tf_vpc_02060600.id}"
 }
